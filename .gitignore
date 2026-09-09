@@ -15,3 +15,6 @@ dist/
 
 # wrangler
 .wrangler/
+
+# 部署紀錄
+*.log

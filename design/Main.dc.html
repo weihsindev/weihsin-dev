@@ -1,0 +1,99 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&amp;family=IBM+Plex+Sans:wght@400;500;600&display=swap">
+  <style>
+    body { margin: 0; }
+    a { color: #d9a05b; text-decoration: none; border-bottom: 1px solid #4a3f31; }
+    a:hover { color: #f0c48a; border-bottom-color: #8a7355; }
+  </style>
+</helmet>
+<div style="width: 900px; min-height: 1240px; background: #0d0e10; color: #e4e1da; font-family: 'IBM Plex Sans', 'PingFang TC', 'Noto Sans TC', sans-serif; box-sizing: border-box; padding: 0;">
+
+  <div style="display: flex; align-items: center; justify-content: space-between; padding: 14px 40px; border-bottom: 1px solid #1e2024; font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: 12px; color: #6f7378; letter-spacing: 0.04em;">
+    <div style="display: flex; gap: 8px; align-items: center;">
+      <span style="width: 8px; height: 8px; border-radius: 50%; background: {{accent}}; display: inline-block;"></span>
+      <span>josh@portfolio</span>
+    </div>
+    <div style="display: flex; gap: 24px;">
+      <span>work</span>
+      <span>writing</span>
+      <span>resume.pdf</span>
+    </div>
+  </div>
+
+  <div style="padding: 88px 40px 72px 40px; border-bottom: 1px solid #1e2024;">
+    <div style="font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: 13px; color: {{accent}}; letter-spacing: 0.06em; margin-bottom: 28px;">~/ whoami</div>
+    <div style="font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: 64px; line-height: 1.05; font-weight: 700; letter-spacing: -0.03em; margin: 0 0 24px 0;">[你的名字]</div>
+    <div style="font-size: 21px; line-height: 1.55; color: #a8a49c; max-width: 620px; text-wrap: pretty;">[職稱,例如:後端工程師]。過去 [N] 年在 [領域] 做 [一句話講你解決什麼問題]。目前在 <a href="#">[公司名稱]</a>。</div>
+    <div style="display: flex; gap: 12px; margin-top: 40px;">
+      <div style="font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: 13px; padding: 11px 20px; border: 1px solid {{accent}}; color: {{accent}}; border-radius: 2px;">下載履歷 PDF</div>
+      <div style="font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: 13px; padding: 11px 20px; border: 1px solid #2c2f34; color: #8d9096; border-radius: 2px;">GitHub</div>
+    </div>
+  </div>
+
+  <div style="padding: 64px 40px; border-bottom: 1px solid #1e2024;">
+    <div style="font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: 13px; color: #6f7378; letter-spacing: 0.06em; margin-bottom: 36px;">~/ cat experience.log</div>
+    <div style="display: flex; flex-direction: column; gap: 34px;">
+
+      <div style="display: grid; grid-template-columns: 190px minmax(0, 1fr); gap: 28px;">
+        <div style="font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: 12px; color: #6f7378; line-height: 1.7; padding-top: 5px;">2022.03 — 現在<br>[地點]</div>
+        <div>
+          <div style="font-size: 19px; font-weight: 600; margin-bottom: 4px;">[職稱] · [公司 A]</div>
+          <div style="font-size: 15px; line-height: 1.7; color: #97948d; text-wrap: pretty;">[做了什麼、影響是什麼。用一句帶數字的成果開頭,例如:把部署時間從 40 分鐘壓到 6 分鐘。]</div>
+          <div style="display: flex; flex-wrap: wrap; gap: 7px; margin-top: 14px;">
+            <span style="font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: 11px; color: #8d9096; background: #16181b; border: 1px solid #24272c; padding: 4px 9px; border-radius: 2px;">Go</span>
+            <span style="font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: 11px; color: #8d9096; background: #16181b; border: 1px solid #24272c; padding: 4px 9px; border-radius: 2px;">Kubernetes</span>
+            <span style="font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: 11px; color: #8d9096; background: #16181b; border: 1px solid #24272c; padding: 4px 9px; border-radius: 2px;">PostgreSQL</span>
+          </div>
+        </div>
+      </div>
+
+      <div style="display: grid; grid-template-columns: 190px minmax(0, 1fr); gap: 28px;">
+        <div style="font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: 12px; color: #6f7378; line-height: 1.7; padding-top: 5px;">2019.08 — 2022.02<br>[地點]</div>
+        <div>
+          <div style="font-size: 19px; font-weight: 600; margin-bottom: 4px;">[職稱] · [公司 B]</div>
+          <div style="font-size: 15px; line-height: 1.7; color: #97948d; text-wrap: pretty;">[第二段經歷的一句話成果。]</div>
+          <div style="display: flex; flex-wrap: wrap; gap: 7px; margin-top: 14px;">
+            <span style="font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: 11px; color: #8d9096; background: #16181b; border: 1px solid #24272c; padding: 4px 9px; border-radius: 2px;">Python</span>
+            <span style="font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: 11px; color: #8d9096; background: #16181b; border: 1px solid #24272c; padding: 4px 9px; border-radius: 2px;">AWS</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <div style="padding: 64px 40px;">
+    <div style="font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: 13px; color: #6f7378; letter-spacing: 0.06em; margin-bottom: 32px;">~/ ls projects/</div>
+    <div style="display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px;">
+      <div style="border: 1px solid #24272c; border-radius: 3px; padding: 22px; background: #111316;">
+        <div style="font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: 12px; color: {{accent}}; margin-bottom: 10px;">01</div>
+        <div style="font-size: 17px; font-weight: 600; margin-bottom: 8px;">[專案名稱]</div>
+        <div style="font-size: 14px; line-height: 1.65; color: #8d9096;">[一句話說明它做什麼、為什麼值得看。]</div>
+      </div>
+      <div style="border: 1px solid #24272c; border-radius: 3px; padding: 22px; background: #111316;">
+        <div style="font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: 12px; color: {{accent}}; margin-bottom: 10px;">02</div>
+        <div style="font-size: 17px; font-weight: 600; margin-bottom: 8px;">[專案名稱]</div>
+        <div style="font-size: 14px; line-height: 1.65; color: #8d9096;">[一句話說明。]</div>
+      </div>
+    </div>
+  </div>
+
+</div>
+</x-dc>
+<script data-dc-script data-props='{"accent":{"editor":"color","default":"#d9a05b","options":["#d9a05b","#7fb389","#7aa2c9","#c98b8b"],"section":"主題"}}'>
+class Component extends DCLogic {
+  renderVals() {
+    return { accent: this.props.accent ?? '#d9a05b' };
+  }
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,116 @@
+# 履歷唯一資料來源。網頁版與 PDF 版都從這裡產生,不要在版型檔裡寫死任何經歷內容。
+# 資料來源:20260901-陳偉昕.pdf(2026-09-08 抽出),廣寧百能起始日依本人更正為 2014-09。
+
+basics:
+  name: 陳偉昕
+  name_en: Josh
+  title: 後端工程師
+  email: hsijcw@gmail.com
+  location: 台北
+  remote: true
+  # 顯示在 hero 右側的狀態標籤。不想放的話設成 null,版型會整個省略。
+  status: 開放新機會
+  available_from: 2026-04
+
+# hero 下方那句定位。刻意只講事實,不用形容詞。
+summary: 金融資訊系統後端開發與維運。熟悉 C#、ASP.NET Core、T-SQL 與 Stored Procedure,做過 VB.NET Web Forms 到 ASP.NET Core 的跨世代系統維護與現代化。
+
+# hero 的四格數字。主動定義年資怎麼算,不讓人自己加總。
+stats:
+  - label: 軟體開發
+    value: 4 年
+  - label: 跨產業實務
+    value: 5 年
+  - label: 地點
+    value: 台北 · 可遠端
+
+# 01 About。兩段,第二段負責把轉職經歷定位成背景資產。
+about:
+  - 我從業務與採購轉進後端開發。過去四年在和潤企業獨立負責三套金融資訊系統的開發與維運,做的是那種必須自己把需求、架構、資料庫和正式環境一起扛起來的工作。
+  - 先前的業務與採購經歷,讓我習慣從使用單位和流程的角度理解需求,而不是等規格書。
+
+# 經歷用同一份清單,靠 track 決定渲染到哪一節:
+#   software     → 02 Systems(展開,帶 highlights)
+#   pre_software → 04 Background(收合,只留一段摘要)
+# 這樣資料只有一種形狀,要調整分節方式時改版型就好,不用動資料。
+#
+# duration 不存在這裡,由 start / end 在 build 時計算。
+# 注意:104 的年資算法是含頭含尾(2022-06 至 2026-04 記為 3 年 11 個月,即月數 +1),
+# 計算函式要沿用同一套,否則網站會跟你投遞出去的履歷對不起來。
+experience:
+  - company: 和潤企業
+    role: 工程師
+    track: software
+    start: 2022-06
+    end: 2026-04
+    industry: 其他金融及輔助業
+    company_size: 500 人以上
+    location: 台北市內湖區
+    highlights:
+      - title: 獨立負責三套金融資訊系統的開發與維運
+        detail: 一套進件系統與兩套後段處理系統,橫跨 VB.NET Web Forms 與 ASP.NET MVC。工作範圍涵蓋需求釐清、功能開發、批次排程、報表產製、SQL Server 資料庫維護、部署及正式環境異常排查。
+      - title: 主導債權回收功能的新系統建立
+        detail: 梳理跨系統影響範圍,完成架構設計與模組切割,獨立交付建置、開發、部署與後續維運。
+      - title: 補上既有架構缺少的後段處理能力
+        detail: 既有系統缺少特定後段處理能力,獨立建立一套新的 ASP.NET Core 系統,參考並調整既有 ASP.NET MVC 的架構模式,完成專案建置、開發、Razor 與 TypeScript 整合、部署及後續維運。
+      - title: 解析並優化集中在 Stored Procedure 的商業邏輯
+        detail: 既有系統的商業邏輯大量集中於 SP,拆解並優化複雜 SP 的架構,改善報表與批次作業的執行效能。
+
+  - company: 協進橡膠工業
+    role: 採購專員
+    track: pre_software
+    start: 2018-10
+    end: 2021-09
+    location: 台北市松山區
+    summary: 負責鞋材採購、供應商協調及生產進度追蹤,確保物料符合工廠生產時程;處理價格協商、品質異常與客訴,協調內外部單位完成後續處理。
+
+  - company: 廣寧百能鞋業
+    role: 國外業務主管
+    track: pre_software
+    start: 2014-09
+    end: 2016-10
+    location: 越南
+    summary: 管理五人業務團隊,負責 Lacoste、Columbia 等品牌客戶的訂單、生產進度及出貨協調,處理客戶需求、交期與異常事件。
+
+# 04 Background 開頭那句,說明下面兩段為什麼在履歷上。
+background_intro: 轉進軟體之前,我在製造業做外銷業務與採購。這五年是我理解需求與流程的來源。
+
+# 05 Education。訓練與學歷同一節,倒序。
+education:
+  - institution: 資展國際
+    program: MSIT133 期 · 智慧應用微軟 C# 工程師就業養成班
+    start: 2021-12
+    end: 2022-05
+    note: 擔任班代及小組組長。
+  - institution: 國立臺北大學
+    program: 經濟學系
+    start: 2006-09
+    end: 2010-06
+    note: 大學畢業。曾任羽球系隊隊長。
+
+# 03 Stack。tech 是深色,practices 是灰色,對應 C1 那張表格的兩種權重。
+skills:
+  tech:
+    - C#
+    - ASP.NET Core
+    - ASP.NET MVC
+    - VB.NET Web Forms
+    - T-SQL
+    - Stored Procedure
+    - SQL Server
+    - Razor
+    - TypeScript
+  practices:
+    - 批次排程
+    - 報表產製
+    - 正式環境排查
+
+languages:
+  - name: 英文
+    level: 聽 / 說 / 讀 / 寫 中等
+
+# 06 Contact。值為 null 的項目版型會整個不渲染,不要留空字串。
+links:
+  email: hsijcw@gmail.com
+  resume_pdf: /resume.pdf   # build 時產出,先佔位
+  github: null              # TODO:有 GitHub 再填,沒有就維持 null

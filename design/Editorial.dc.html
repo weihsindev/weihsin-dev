@@ -1,0 +1,86 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&amp;family=Karla:wght@400;500;600&display=swap">
+  <style>
+    body { margin: 0; }
+    a { color: #a8512f; text-decoration: none; border-bottom: 1px solid #d9c3b4; }
+    a:hover { color: #7d3a20; border-bottom-color: #a8512f; }
+  </style>
+</helmet>
+<div style="width: 900px; min-height: 1240px; background: #faf6f0; color: #201c18; font-family: 'Karla', 'PingFang TC', 'Noto Sans TC', sans-serif; box-sizing: border-box; padding: 0;">
+
+  <div style="display: flex; align-items: baseline; justify-content: space-between; padding: 26px 56px 20px 56px; border-bottom: 1px solid #221e1a;">
+    <div style="font-family: 'Instrument Serif', Georgia, serif; font-size: 19px; letter-spacing: 0.01em;">[你的名字]</div>
+    <div style="display: flex; gap: 26px; font-size: 12px; letter-spacing: 0.14em; text-transform: uppercase; color: #6b6058;">
+      <span>Work</span>
+      <span>Writing</span>
+      <span>Contact</span>
+    </div>
+  </div>
+
+  <div style="padding: 76px 56px 60px 56px;">
+    <div style="font-size: 11px; letter-spacing: 0.2em; text-transform: uppercase; color: {{accent}}; margin-bottom: 30px;">Software Engineer · [城市]</div>
+    <div style="font-family: 'Instrument Serif', Georgia, serif; font-size: 96px; line-height: 0.94; letter-spacing: -0.02em; max-width: 740px; text-wrap: balance;">我做 <span style="font-style: italic; color: {{accent}};">[你的專長]</span>,而且把它做到能上線。</div>
+    <div style="display: grid; grid-template-columns: minmax(0, 1fr) 240px; gap: 56px; margin-top: 52px; align-items: start;">
+      <div style="font-size: 18px; line-height: 1.72; color: #4a423b; text-wrap: pretty;">[兩到三句自我介紹。講你關心什麼樣的問題、擅長什麼樣的取捨,而不是列技術棧。技術棧下面會列。]</div>
+      <div style="border-left: 2px solid {{accent}}; padding-left: 18px;">
+        <div style="font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; color: #8a7d73; margin-bottom: 10px;">現職</div>
+        <div style="font-family: 'Instrument Serif', Georgia, serif; font-size: 24px; line-height: 1.2; margin-bottom: 16px;">[公司名稱]</div>
+        <div style="font-size: 13px; line-height: 1.6; color: #6b6058;">[職稱]<br>2022 — 現在</div>
+      </div>
+    </div>
+  </div>
+
+  <div style="padding: 0 56px 60px 56px;">
+    <div style="border-top: 1px solid #221e1a; padding-top: 14px; display: flex; align-items: baseline; justify-content: space-between; margin-bottom: 44px;">
+      <div style="font-family: 'Instrument Serif', Georgia, serif; font-size: 34px;">經歷</div>
+      <div style="font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase; color: #8a7d73;">Selected</div>
+    </div>
+
+    <div style="display: flex; flex-direction: column; gap: 40px;">
+      <div style="display: grid; grid-template-columns: 150px minmax(0, 1fr); gap: 36px;">
+        <div style="font-size: 13px; line-height: 1.6; color: #8a7d73; letter-spacing: 0.02em;">2022 — 現在</div>
+        <div>
+          <div style="font-family: 'Instrument Serif', Georgia, serif; font-size: 27px; line-height: 1.25; margin-bottom: 8px;">[職稱],[公司 A]</div>
+          <div style="font-size: 16px; line-height: 1.75; color: #4a423b; text-wrap: pretty;">[一句帶數字的成果開頭,再一句說明你怎麼做到的。]</div>
+        </div>
+      </div>
+      <div style="display: grid; grid-template-columns: 150px minmax(0, 1fr); gap: 36px;">
+        <div style="font-size: 13px; line-height: 1.6; color: #8a7d73; letter-spacing: 0.02em;">2019 — 2022</div>
+        <div>
+          <div style="font-family: 'Instrument Serif', Georgia, serif; font-size: 27px; line-height: 1.25; margin-bottom: 8px;">[職稱],[公司 B]</div>
+          <div style="font-size: 16px; line-height: 1.75; color: #4a423b; text-wrap: pretty;">[第二段經歷的成果。]</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div style="padding: 0 56px 72px 56px;">
+    <div style="border-top: 1px solid #221e1a; padding-top: 14px; font-family: 'Instrument Serif', Georgia, serif; font-size: 34px; margin-bottom: 30px;">工具</div>
+    <div style="display: flex; flex-wrap: wrap; gap: 10px;">
+      <span style="font-size: 14px; padding: 7px 16px; border: 1px solid #d6c8bb; border-radius: 999px; color: #4a423b;">Go</span>
+      <span style="font-size: 14px; padding: 7px 16px; border: 1px solid #d6c8bb; border-radius: 999px; color: #4a423b;">TypeScript</span>
+      <span style="font-size: 14px; padding: 7px 16px; border: 1px solid #d6c8bb; border-radius: 999px; color: #4a423b;">PostgreSQL</span>
+      <span style="font-size: 14px; padding: 7px 16px; border: 1px solid #d6c8bb; border-radius: 999px; color: #4a423b;">Kubernetes</span>
+      <span style="font-size: 14px; padding: 7px 16px; border: 1px solid #d6c8bb; border-radius: 999px; color: #4a423b;">[其他]</span>
+    </div>
+  </div>
+
+</div>
+</x-dc>
+<script data-dc-script data-props='{"accent":{"editor":"color","default":"#a8512f","options":["#a8512f","#5c6f4a","#3f5a7a","#7a4a6b"],"section":"主題"}}'>
+class Component extends DCLogic {
+  renderVals() {
+    return { accent: this.props.accent ?? '#a8512f' };
+  }
+}
+</script>
+</body>
+</html>

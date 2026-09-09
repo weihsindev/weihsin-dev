@@ -1,0 +1,174 @@
+---
+import { resume, duration, ym } from '../lib/resume';
+import '../styles/resume.css';
+
+const { basics, summary, stats, about, experience, background_intro, education, skills, languages, links } = resume;
+
+const software = experience.filter((e) => e.track === 'software');
+const preSoftware = experience.filter((e) => e.track === 'pre_software');
+
+const sections = [
+  { num: '01', label: 'About' },
+  { num: '02', label: 'Systems' },
+  { num: '03', label: 'Stack' },
+  { num: '04', label: 'Background' },
+  { num: '05', label: 'Education' },
+];
+
+const pageTitle = `${basics.name} — ${basics.title}`;
+const canonical = new URL(Astro.url.pathname, Astro.site);
+---
+
+<html lang="zh-Hant">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{pageTitle}</title>
+    <meta name="description" content={summary} />
+    <meta property="og:title" content={pageTitle} />
+    <meta property="og:description" content={summary} />
+    <meta property="og:type" content="profile" />
+    <meta property="og:url" content={canonical} />
+    <link rel="canonical" href={canonical} />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700&family=Space+Mono:wght@400;700&display=swap"
+    />
+  </head>
+
+  <body>
+    <main class="page">
+      <!-- 頁首 -->
+      <div class="row topbar">
+        <div class="rail">{basics.name}</div>
+        <div class="body">
+          <nav class="nav">
+            {sections.map((s) => <a href={`#${s.label.toLowerCase()}`}>{s.num} {s.label}</a>)}
+            {links.resume_pdf && <a class="nav-cv" href={links.resume_pdf}>CV.PDF</a>}
+          </nav>
+        </div>
+      </div>
+
+      <!-- 00 定位 -->
+      <div class="row hero">
+        <div class="rail"><div class="rail-num">00</div></div>
+        <div class="body">
+          <h1 class="hero-name">{basics.name}<br /><span>{basics.title}</span></h1>
+          <p class="hero-summary">{summary}</p>
+          <div class="stats">
+            {stats.map((s) => (
+              <div>
+                <div class="stat-label">{s.label}</div>
+                <div class="stat-value">{s.value}</div>
+              </div>
+            ))}
+            {basics.status && (
+              <div>
+                <div class="stat-label">狀態</div>
+                <div class="stat-value is-accent">{basics.status}</div>
+              </div>
+            )}
+          </div>
+        </div>
+      </div>
+
+      <!-- 01 About -->
+      <section class="row" id="about">
+        <div class="rail"><div class="rail-num">01</div><div class="rail-label">About</div></div>
+        <div class="body about">
+          {about.map((p) => <p>{p}</p>)}
+        </div>
+      </section>
+
+      <!-- 02 Systems -->
+      <section class="row" id="systems">
+        <div class="rail"><div class="rail-num">02</div><div class="rail-label">Systems</div></div>
+        <div class="body">
+          {software.map((job) => (
+            <article>
+              <div class="job-head">
+                <h2 class="job-title">{job.role} · {job.company}</h2>
+                <div class="job-dates">{ym(job.start)} — {ym(job.end)}</div>
+              </div>
+              <div class="job-meta">
+                {[job.industry, job.company_size, job.location, duration(job.start, job.end)]
+                  .filter(Boolean)
+                  .join(' · ')}
+              </div>
+              <div class="highlights">
+                {(job.highlights ?? []).map((h, i) => (
+                  <div class="highlight">
+                    <div class="highlight-num">{String(i + 1).padStart(2, '0')}</div>
+                    <div>
+                      <h3 class="highlight-title">{h.title}</h3>
+                      <div class="highlight-detail">{h.detail}</div>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </article>
+          ))}
+        </div>
+      </section>
+
+      <!-- 03 Stack -->
+      <section class="row" id="stack">
+        <div class="rail"><div class="rail-num">03</div><div class="rail-label">Stack</div></div>
+        <div class="body">
+          <ul class="stack">
+            {skills.tech.map((s) => <li>{s}</li>)}
+            {skills.practices.map((s) => <li class="is-soft">{s}</li>)}
+          </ul>
+          {languages.map((l) => <div class="langs">{l.name} — {l.level}</div>)}
+        </div>
+      </section>
+
+      <!-- 04 Background -->
+      <section class="row" id="background">
+        <div class="rail"><div class="rail-num">04</div><div class="rail-label">Background</div></div>
+        <div class="body">
+          <p class="section-intro">{background_intro}</p>
+          {preSoftware.map((job) => (
+            <div class="entry">
+              <div class="entry-dates">{ym(job.start)}—<br />{ym(job.end)}</div>
+              <div>
+                <h3 class="entry-title">{job.role} · {job.company}{job.location === '越南' ? '(越南)' : ''}</h3>
+                <div class="entry-detail">{job.summary}</div>
+              </div>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      <!-- 05 Education -->
+      <section class="row" id="education">
+        <div class="rail"><div class="rail-num">05</div><div class="rail-label">Education</div></div>
+        <div class="body">
+          {education.map((e) => (
+            <div class="entry">
+              <div class="entry-dates">{ym(e.start)}—<br />{ym(e.end)}</div>
+              <div>
+                <h3 class="entry-title">{e.institution} · {e.program}</h3>
+                {e.note && <div class="entry-detail">{e.note}</div>}
+              </div>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      <!-- 06 Contact -->
+      <section class="row contact" id="contact">
+        <div class="rail"><div class="rail-num">06</div><div class="rail-label">Contact</div></div>
+        <div class="body">
+          <div class="contact-links">
+            <a href={`mailto:${links.email}`}>{links.email}</a>
+            {links.resume_pdf && <><span class="sep">/</span><a href={links.resume_pdf}>履歷 PDF</a></>}
+            {links.github && <><span class="sep">/</span><a href={links.github}>GitHub</a></>}
+          </div>
+        </div>
+      </section>
+    </main>
+  </body>
+</html>

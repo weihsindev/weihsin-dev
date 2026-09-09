@@ -1,0 +1,106 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,700;12..96,800&amp;family=Public+Sans:wght@400;500;600&display=swap">
+  <style>
+    body { margin: 0; }
+    a { color: #34c3b5; text-decoration: none; border-bottom: 1px solid #1f4f4a; }
+    a:hover { color: #6fded3; border-bottom-color: #34c3b5; }
+  </style>
+</helmet>
+<div style="width: 900px; min-height: 1240px; background: #0f1620; color: #e8eef2; font-family: 'Public Sans', 'PingFang TC', 'Noto Sans TC', sans-serif; box-sizing: border-box; padding: 0;">
+
+  <div style="padding: 72px 56px 56px 56px; background: linear-gradient(180deg, #141d29 0%, #0f1620 100%);">
+    <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 26px;">
+      <span style="width: 26px; height: 3px; background: {{accent}}; display: inline-block;"></span>
+      <span style="font-size: 12px; letter-spacing: 0.16em; text-transform: uppercase; color: {{accent}};">[N] 年,[M] 家公司,一條線</span>
+    </div>
+    <div style="font-family: 'Bricolage Grotesque', 'PingFang TC', sans-serif; font-size: 82px; font-weight: 800; line-height: 0.98; letter-spacing: -0.035em; margin-bottom: 24px;">[你的名字]</div>
+    <div style="font-size: 20px; line-height: 1.6; color: #93a3b0; max-width: 600px; text-wrap: pretty;">[職稱]。[一句話講你的職涯主軸——是什麼問題把這些工作串起來的。]</div>
+  </div>
+
+  <div style="padding: 8px 56px 72px 56px;">
+    <div style="display: grid; grid-template-columns: 22px minmax(0, 1fr); gap: 26px;">
+
+      <div style="position: relative; background: linear-gradient(180deg, {{accent}} 0%, #c08ce0 100%); width: 2px; margin-left: 10px; border-radius: 2px;"></div>
+
+      <div style="display: flex; flex-direction: column; gap: 20px; padding: 24px 0 0 0;">
+
+        <div style="position: relative; background: #17202c; border: 1px solid #22303f; border-radius: 10px; padding: 26px 28px;">
+          <div style="position: absolute; left: -47px; top: 30px; width: 14px; height: 14px; border-radius: 50%; background: {{accent}}; border: 3px solid #0f1620;"></div>
+          <div style="display: flex; align-items: baseline; justify-content: space-between; gap: 16px; margin-bottom: 10px;">
+            <div style="font-family: 'Bricolage Grotesque', sans-serif; font-size: 25px; font-weight: 700; letter-spacing: -0.015em;">[職稱]</div>
+            <div style="font-size: 13px; color: #7d8b98; white-space: nowrap;">2022.03 — 現在</div>
+          </div>
+          <div style="font-size: 15px; color: {{accent}}; margin-bottom: 14px; font-weight: 500;">[公司 A]</div>
+          <div style="font-size: 15px; line-height: 1.72; color: #a4b2be; text-wrap: pretty;">[一句帶數字的成果開頭。再一句說明你怎麼做到的、跟誰協作。]</div>
+          <div style="display: flex; flex-wrap: wrap; gap: 8px; margin-top: 18px;">
+            <span style="font-size: 12px; padding: 5px 11px; border-radius: 999px; background: #1e2b3a; color: #9fb0bd;">Go</span>
+            <span style="font-size: 12px; padding: 5px 11px; border-radius: 999px; background: #1e2b3a; color: #9fb0bd;">Kubernetes</span>
+            <span style="font-size: 12px; padding: 5px 11px; border-radius: 999px; background: #1e2b3a; color: #9fb0bd;">PostgreSQL</span>
+          </div>
+        </div>
+
+        <div style="position: relative; background: #17202c; border: 1px solid #22303f; border-radius: 10px; padding: 26px 28px;">
+          <div style="position: absolute; left: -47px; top: 30px; width: 14px; height: 14px; border-radius: 50%; background: #7ea9c9; border: 3px solid #0f1620;"></div>
+          <div style="display: flex; align-items: baseline; justify-content: space-between; gap: 16px; margin-bottom: 10px;">
+            <div style="font-family: 'Bricolage Grotesque', sans-serif; font-size: 25px; font-weight: 700; letter-spacing: -0.015em;">[職稱]</div>
+            <div style="font-size: 13px; color: #7d8b98; white-space: nowrap;">2019.08 — 2022.02</div>
+          </div>
+          <div style="font-size: 15px; color: #7ea9c9; margin-bottom: 14px; font-weight: 500;">[公司 B]</div>
+          <div style="font-size: 15px; line-height: 1.72; color: #a4b2be; text-wrap: pretty;">[一句帶數字的成果。]</div>
+          <div style="display: flex; flex-wrap: wrap; gap: 8px; margin-top: 18px;">
+            <span style="font-size: 12px; padding: 5px 11px; border-radius: 999px; background: #1e2b3a; color: #9fb0bd;">Python</span>
+            <span style="font-size: 12px; padding: 5px 11px; border-radius: 999px; background: #1e2b3a; color: #9fb0bd;">AWS</span>
+          </div>
+        </div>
+
+        <div style="position: relative; background: #17202c; border: 1px solid #22303f; border-radius: 10px; padding: 26px 28px;">
+          <div style="position: absolute; left: -47px; top: 30px; width: 14px; height: 14px; border-radius: 50%; background: #c08ce0; border: 3px solid #0f1620;"></div>
+          <div style="display: flex; align-items: baseline; justify-content: space-between; gap: 16px; margin-bottom: 10px;">
+            <div style="font-family: 'Bricolage Grotesque', sans-serif; font-size: 25px; font-weight: 700; letter-spacing: -0.015em;">[職稱]</div>
+            <div style="font-size: 13px; color: #7d8b98; white-space: nowrap;">2017.06 — 2019.07</div>
+          </div>
+          <div style="font-size: 15px; color: #c08ce0; margin-bottom: 14px; font-weight: 500;">[公司 C]</div>
+          <div style="font-size: 15px; line-height: 1.72; color: #a4b2be; text-wrap: pretty;">[一句帶數字的成果。]</div>
+        </div>
+
+        <div style="position: relative; padding: 6px 28px 0 28px;">
+          <div style="position: absolute; left: -47px; top: 10px; width: 14px; height: 14px; border-radius: 50%; background: #0f1620; border: 3px solid #3a4b5c;"></div>
+          <div style="font-size: 15px; color: #6d7c89;">[學歷或起點]</div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <div style="padding: 0 56px 72px 56px;">
+    <div style="border-top: 1px solid #22303f; padding-top: 34px; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px;">
+      <div style="background: #17202c; border: 1px solid #22303f; border-radius: 10px; padding: 24px;">
+        <div style="font-family: 'Bricolage Grotesque', sans-serif; font-size: 19px; font-weight: 700; margin-bottom: 8px;">[專案名稱]</div>
+        <div style="font-size: 14px; line-height: 1.65; color: #93a3b0;">[一句話說明。]</div>
+      </div>
+      <div style="background: #17202c; border: 1px solid #22303f; border-radius: 10px; padding: 24px;">
+        <div style="font-family: 'Bricolage Grotesque', sans-serif; font-size: 19px; font-weight: 700; margin-bottom: 8px;">[專案名稱]</div>
+        <div style="font-size: 14px; line-height: 1.65; color: #93a3b0;">[一句話說明。]</div>
+      </div>
+    </div>
+  </div>
+
+</div>
+</x-dc>
+<script data-dc-script data-props='{"accent":{"editor":"color","default":"#34c3b5","options":["#34c3b5","#e0a458","#7ea9c9","#c08ce0"],"section":"主題"}}'>
+class Component extends DCLogic {
+  renderVals() {
+    return { accent: this.props.accent ?? '#34c3b5' };
+  }
+}
+</script>
+</body>
+</html>

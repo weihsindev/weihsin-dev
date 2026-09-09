@@ -1,0 +1,14 @@
+node_modules/
+dist/
+.astro/
+.DS_Store
+
+# 個人資料:履歷 PDF 含手機與通訊地址,不進版控
+*.pdf
+
+# 後台截圖
+/1.png
+/*.screenshot.png
+
+# 設計稿的打包產物(2MB,可從 design/ 重新產生)
+/resume-site-directions.html

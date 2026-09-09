@@ -116,4 +116,4 @@ languages:
 links:
   email: hsijcw@gmail.com
   resume_pdf: /resume.pdf   # build 時產出,先佔位
-  github: null              # TODO:有 GitHub 再填,沒有就維持 null
+  github: https://github.com/weihsindev

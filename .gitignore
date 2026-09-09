@@ -12,3 +12,6 @@ dist/
 
 # 設計稿的打包產物(2MB,可從 design/ 重新產生)
 /resume-site-directions.html
+
+# wrangler
+.wrangler/

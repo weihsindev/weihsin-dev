@@ -1,0 +1,12 @@
+{
+  // 純靜態站:只上傳 dist 當靜態資源,不需要 Cloudflare adapter。
+  // 這個檔案存在,wrangler 就不會自己去猜設定並執行 `astro add cloudflare`。
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "personal-engineering-portfolio",
+  "compatibility_date": "2026-09-09",
+  // 目前沒有 404 頁,所以不設 not_found_handling(預設回一般 404)。
+  // 之後加了 src/pages/404.astro 再改成 "404-page"。
+  "assets": {
+    "directory": "./dist"
+  }
+}

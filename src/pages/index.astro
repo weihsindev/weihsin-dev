@@ -164,7 +164,7 @@ const canonical = new URL(Astro.url.pathname, Astro.site);
         <div class="body">
           <div class="contact-links">
             <a href={`mailto:${links.email}`}>{links.email}</a>
-            {links.resume_pdf && <><span class="sep">/</span><a href={links.resume_pdf}>履歷 PDF</a></>}
+            {links.resume_pdf && <><span class="sep is-pdf">/</span><a class="is-pdf" href={links.resume_pdf}>履歷 PDF</a></>}
             {links.github && <><span class="sep">/</span><a href={links.github}>GitHub</a></>}
           </div>
         </div>

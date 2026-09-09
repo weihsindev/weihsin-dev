@@ -132,7 +132,7 @@ a:hover { color: #a5240f; border-bottom-color: #a5240f; }
 .contact-links .sep { color: var(--rule); }
 
 /* 手機。左欄編號收成橫向標籤,格線退成單欄 */
-@media (max-width: 760px) {
+@media screen and (max-width: 760px) {
   :root { --gutter: 20px; }
   .row { grid-template-columns: minmax(0, 1fr); }
   .rail { display: flex; gap: 10px; align-items: baseline; padding: 24px var(--gutter) 0; }
@@ -153,14 +153,47 @@ a:hover { color: #a5240f; border-bottom-color: #a5240f; }
   .contact .body { padding-bottom: 40px; }
 }
 
-/* 列印 / PDF。C1 的重點就是這裡幾乎不用改 */
+/* 列印 / PDF。
+   注意:A4 扣掉邊界後內容寬約 695px,若手機斷點沒有限定 screen,
+   這裡會誤觸手機版面。上面那個 media query 的 `screen and` 不能拿掉。 */
 @media print {
-  :root { --bg: #fff; --gutter: 0; }
+  :root { --bg: #fff; --gutter: 0; --rail: 108px; }
   body { font-size: 10.5pt; }
-  .topbar, .nav { display: none; }
-  .row { break-inside: avoid; border-bottom-color: #ddd; }
-  .highlight, .entry { break-inside: avoid; }
-  .hero-name { font-size: 30pt; }
+
+  .row.topbar, .nav { display: none; }
+  .is-pdf { display: none; } /* PDF 裡不需要再連到 PDF 自己 */
+
+  /* Chrome 列印時會忽略 grid 容器上的 break-inside,所以這裡把兩欄
+     改用 float 排版(block 容器才會被遵守),版面外觀維持不變。 */
+  .row { display: block; break-inside: auto; border-bottom-color: #ddd; }
+  .rail { float: left; width: var(--rail); }
+  .body { margin-left: var(--rail); }
+  .row::after { content: ''; display: table; clear: both; }
+
+  /* 高的區塊允許跨頁,否則會擠出整頁空白;矮的區塊整塊搬走。 */
+  #stack, #background, #education, .contact { break-inside: avoid; }
+  .highlight, .entry, .job-head { break-inside: avoid; }
+  .rail { break-after: avoid; }
+
+  /* 細線改用 border 畫。原本靠 1px gap 露出容器底色,一旦跨頁,
+     容器底色會在斷點留下一條灰色色塊。 */
+  .stack { background: none; gap: 0; border-width: 1px 0 0 1px; }
+  .stack li { border-right: 1px solid var(--rule); border-bottom: 1px solid var(--rule); }
+
+  .rail, .body { padding-top: 14px; padding-bottom: 14px; }
+  .hero .rail, .hero .body { padding-top: 0; padding-bottom: 18px; }
+  .contact .rail, .contact .body { padding-top: 14px; padding-bottom: 0; }
+
+  .hero-name { font-size: 30pt; margin-bottom: 10px; }
+  .hero-summary { font-size: 11pt; }
+  .stats { margin-top: 16px; padding-top: 12px; }
+  .about p { font-size: 11pt; }
+  .about p + p { margin-top: 10px; }
+  .job-meta { margin-bottom: 16px; }
+  .highlights { gap: 14px; }
+  .entry { padding: 12px 0; }
+  .section-intro { margin-bottom: 14px; }
+
   a { color: var(--ink); border-bottom: 0; }
   .stack li { background: #fff; }
 }

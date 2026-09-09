@@ -58,7 +58,10 @@ const canonical = new URL(Astro.url.pathname, Astro.site);
       <div class="row hero">
         <div class="rail"><div class="rail-num">00</div></div>
         <div class="body">
-          <h1 class="hero-name">{basics.name}<br /><span>{basics.title}</span></h1>
+          <h1 class="hero-name">{basics.name}</h1>
+          <div class="hero-alt">{basics.name_full}</div>
+          <div class="hero-title">{basics.title}</div>
+          {basics.stack_line && <div class="hero-stack">{basics.stack_line}</div>}
           <p class="hero-summary">{summary}</p>
           <div class="stats">
             {stats.map((s) => (

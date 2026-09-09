@@ -2,9 +2,11 @@
 # 資料來源:20260901-陳偉昕.pdf(2026-09-08 抽出),廣寧百能起始日依本人更正為 2014-09。
 
 basics:
-  name: 陳偉昕
-  name_en: Josh
-  title: 後端工程師
+  name: Josh Chen
+  name_full: Wei-Hsin Chen
+  title: Backend Software Engineer
+  # hero 名字下方那行技術定位。設成 null 就不顯示。
+  stack_line: .NET / C# / ASP.NET Core
   email: hsijcw@gmail.com
   location: 台北
   remote: true

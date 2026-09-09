@@ -9,8 +9,9 @@ const yearMonth = z.string().regex(/^\d{4}-\d{2}$/, '日期格式必須是 YYYY-
 const schema = z.object({
   basics: z.object({
     name: z.string(),
-    name_en: z.string(),
+    name_full: z.string(),
     title: z.string(),
+    stack_line: z.string().nullable(),
     email: z.string().email(),
     location: z.string(),
     remote: z.boolean(),

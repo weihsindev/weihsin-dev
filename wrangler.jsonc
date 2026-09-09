@@ -4,9 +4,9 @@
   "$schema": "node_modules/wrangler/config-schema.json",
   "name": "personal-engineering-portfolio",
   "compatibility_date": "2026-09-09",
-  // 目前沒有 404 頁,所以不設 not_found_handling(預設回一般 404)。
-  // 之後加了 src/pages/404.astro 再改成 "404-page"。
+  // 找不到的路徑回傳 dist/404.html(由 src/pages/404.astro 產生)。
   "assets": {
-    "directory": "./dist"
+    "directory": "./dist",
+    "not_found_handling": "404-page"
   }
 }

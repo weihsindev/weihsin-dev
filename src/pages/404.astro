@@ -1,0 +1,48 @@
+---
+import { resume } from '../lib/resume';
+import '../styles/resume.css';
+
+const { basics, links } = resume;
+---
+
+<html lang="zh-Hant">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>找不到這一頁 — {basics.name}</title>
+    <meta name="robots" content="noindex" />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <link rel="icon" href="/favicon.ico" sizes="32x32" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700&family=Space+Mono:wght@400;700&display=swap"
+    />
+  </head>
+
+  <body>
+    <main class="page">
+      <div class="row topbar">
+        <div class="rail">{basics.name}</div>
+        <div class="body">
+          <nav class="nav"><a href="/">← 回首頁</a></nav>
+        </div>
+      </div>
+
+      <div class="row hero">
+        <div class="rail"><div class="rail-num">404</div></div>
+        <div class="body">
+          <h1 class="hero-name">找不到<br /><span>這一頁</span></h1>
+          <p class="hero-summary">網址可能打錯了,或是這一頁已經移走。</p>
+          <div class="contact-links" style="margin-top: 32px;">
+            <a href="/">回首頁</a>
+            {links.resume_pdf && <><span class="sep">/</span><a href={links.resume_pdf}>履歷 PDF</a></>}
+            <span class="sep">/</span>
+            <a href={`mailto:${links.email}`}>{links.email}</a>
+          </div>
+        </div>
+      </div>
+    </main>
+  </body>
+</html>

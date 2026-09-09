@@ -66,31 +66,32 @@ a:hover { color: #a5240f; border-bottom-color: #a5240f; }
 
 /* 00 — hero */
 .hero .rail, .hero .body { padding-top: 44px; padding-bottom: 44px; }
+/* 標題刻意收斂:hero 是身分標示,頁面的重點在下面的經歷與系統 */
 .hero-name {
-  font-size: clamp(40px, 8vw, 74px);
+  font-size: clamp(30px, 4vw, 36px);
   font-weight: 700;
-  line-height: 0.96;
-  letter-spacing: -0.035em;
+  line-height: 1.1;
+  letter-spacing: -0.02em;
   margin: 0;
 }
 /* 本名。刻意壓低權重,是補充資訊而不是第二個標題 */
 .hero-alt {
-  font-size: 22px;
+  font-size: 15px;
   color: var(--ink-3);
   letter-spacing: 0.01em;
-  margin-top: 6px;
+  margin-top: 5px;
 }
 .hero-title {
-  font-size: clamp(28px, 4.4vw, 40px);
+  font-size: 24px;
   font-weight: 700;
-  line-height: 1.1;
-  letter-spacing: -0.02em;
+  line-height: 1.2;
+  letter-spacing: -0.015em;
   color: var(--accent);
-  margin-top: 26px;
+  margin-top: 20px;
 }
 .hero-stack {
   font-family: var(--mono);
-  font-size: 13px;
+  font-size: 12px;
   letter-spacing: 0.04em;
   color: var(--ink-3);
   margin-top: 10px;
@@ -163,8 +164,8 @@ a:hover { color: #a5240f; border-bottom-color: #a5240f; }
   .topbar .body { padding-top: 10px; padding-bottom: 12px; }
   .hero .rail { padding-top: 28px; }
   .hero .body { padding-top: 8px; padding-bottom: 32px; }
-  .hero-alt { font-size: 19px; }
-  .hero-title { margin-top: 20px; }
+  .hero-alt { font-size: 14px; }
+  .hero-title { font-size: 21px; margin-top: 16px; }
   .stats { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; }
   .hero-summary { font-size: 17px; }
   .about p { font-size: 17px; }
@@ -207,10 +208,10 @@ a:hover { color: #a5240f; border-bottom-color: #a5240f; }
   .hero .rail, .hero .body { padding-top: 0; padding-bottom: 18px; }
   .contact .rail, .contact .body { padding-top: 14px; padding-bottom: 0; }
 
-  .hero-name { font-size: 30pt; margin-bottom: 0; }
-  .hero-alt { font-size: 12pt; margin-top: 2px; }
-  .hero-title { font-size: 17pt; margin-top: 12px; }
-  .hero-stack { font-size: 9pt; margin-top: 5px; }
+  .hero-name { font-size: 17pt; margin-bottom: 0; }
+  .hero-alt { font-size: 9.5pt; margin-top: 2px; }
+  .hero-title { font-size: 12.5pt; margin-top: 9px; }
+  .hero-stack { font-size: 8pt; margin-top: 4px; }
   .hero-summary { font-size: 11pt; margin-top: 12px; }
   .stats { margin-top: 16px; padding-top: 12px; }
   .about p { font-size: 11pt; }

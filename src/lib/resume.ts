@@ -10,6 +10,7 @@ const schema = z.object({
   basics: z.object({
     name: z.string(),
     name_full: z.string(),
+    name_zh: z.string(),
     title: z.string(),
     stack_line: z.string().nullable(),
     email: z.string().email(),

@@ -4,6 +4,7 @@
 basics:
   name: Josh Chen
   name_full: Wei-Hsin Chen
+  name_zh: 陳偉昕
   title: Backend Software Engineer
   # hero 名字下方那行技術定位。設成 null 就不顯示。
   stack_line: .NET / C# / ASP.NET Core

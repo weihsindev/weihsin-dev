@@ -3,12 +3,12 @@
 
 basics:
   name: Josh Chen
-  name_full: Wei-Hsin Chen
   name_zh: 陳偉昕
+  name_full: Wei-Hsin Chen
   title: Backend Software Engineer
   # hero 名字下方那行技術定位。設成 null 就不顯示。
-  stack_line: .NET / C# / ASP.NET Core
-  email: hsijcw@gmail.com
+  stack_line: C# · .NET · ASP.NET Core · SQL Server
+  email: hsijc99@gmail.com
   location: 台北
   remote: true
   # 顯示在 hero 右側的狀態標籤。不想放的話設成 null,版型會整個省略。
@@ -33,8 +33,8 @@ about:
   - 先前的業務與採購經歷,讓我習慣從使用單位和流程的角度理解需求,而不是等規格書。
 
 # 經歷用同一份清單,靠 track 決定渲染到哪一節:
-#   software     → 02 Systems(展開,帶 highlights)
-#   pre_software → 04 Background(收合,只留一段摘要)
+#   software     → 02 Experience(公司/期間/概述;交付內容在 projects)
+#   pre_software → 05 Background(收合,只留一段摘要)
 # 這樣資料只有一種形狀,要調整分節方式時改版型就好,不用動資料。
 #
 # duration 不存在這裡,由 start / end 在 build 時計算。
@@ -49,15 +49,7 @@ experience:
     industry: 其他金融及輔助業
     company_size: 500 人以上
     location: 台北市內湖區
-    highlights:
-      - title: 獨立負責三套金融資訊系統的開發與維運
-        detail: 一套進件系統與兩套後段處理系統,橫跨 VB.NET Web Forms 與 ASP.NET MVC。工作範圍涵蓋需求釐清、功能開發、批次排程、報表產製、SQL Server 資料庫維護、部署及正式環境異常排查。
-      - title: 主導債權回收功能的新系統建立
-        detail: 梳理跨系統影響範圍,完成架構設計與模組切割,獨立交付建置、開發、部署與後續維運。
-      - title: 補上既有架構缺少的後段處理能力
-        detail: 既有系統缺少特定後段處理能力,獨立建立一套新的 ASP.NET Core 系統,參考並調整既有 ASP.NET MVC 的架構模式,完成專案建置、開發、Razor 與 TypeScript 整合、部署及後續維運。
-      - title: 解析並優化集中在 Stored Procedure 的商業邏輯
-        detail: 既有系統的商業邏輯大量集中於 SP,拆解並優化複雜 SP 的架構,改善報表與批次作業的執行效能。
+    summary: 獨立負責三套金融資訊系統的開發與維運 —— 一套進件系統與兩套後段處理系統,橫跨 VB.NET Web Forms 與 ASP.NET MVC。工作範圍涵蓋需求釐清、功能開發、批次排程、報表產製、SQL Server 資料庫維護、部署及正式環境異常排查。
 
   - company: 協進橡膠工業
     role: 採購專員
@@ -75,10 +67,29 @@ experience:
     location: 越南
     summary: 管理五人業務團隊,負責 Lacoste、Columbia 等品牌客戶的訂單、生產進度及出貨協調,處理客戶需求、交期與異常事件。
 
-# 04 Background 開頭那句,說明下面兩段為什麼在履歷上。
+# 03 Selected Work 開頭那句。這節列的是任職期間交付的系統,不是個人作品,
+# 所以歸屬必須寫在最前面 —— 少了這句會被誤讀成 side project。
+projects_intro: 以下系統均為和潤企業任內獨立或主導交付。
+
+# 03 Selected Work。內容原本是 experience 底下的 highlights,搬出來自成一節:
+# 02 回答「在哪待過多久」,03 回答「做出了什麼」。不要在兩邊各放一份。
+projects:
+  - title: 金融進件系統
+    detail: 三套系統中的進件端,獨立負責開發與維運。為了準確定位問題,需要同時理解既有程式架構、資料流程,以及不同金融商品的業務規則。
+  - title: 債權回收系統
+    detail: 主導新系統建立。梳理跨系統影響範圍,完成架構設計與模組切割,獨立交付建置、開發、部署與後續維運。
+  - title: ASP.NET Core 現代化系統
+    detail: 既有系統缺少特定後段處理能力,獨立建立一套新的 ASP.NET Core 系統,參考並調整既有 ASP.NET MVC 的架構模式,完成專案建置、開發、Razor 與 TypeScript 整合、部署及後續維運。
+  - title: Stored Procedure 優化
+    detail: 既有系統的商業邏輯大量集中於 SP,拆解並優化複雜 SP 的架構,改善報表與批次作業的執行效能。
+  # 這一項不是系統,是橫跨三套系統的工作方式,所以標題刻意不帶「系統」。
+  - title: 需求與異常分析
+    detail: 與使用單位確認需求及異常情境,追查資料來源、商業規則與系統流程,完成問題分析與修正。
+
+# 05 Background 開頭那句,說明下面兩段為什麼在履歷上。
 background_intro: 轉進軟體之前,我在製造業做外銷業務與採購。這五年是我理解需求與流程的來源。
 
-# 05 Education。訓練與學歷同一節,倒序。
+# 06 Education。訓練與學歷同一節,倒序。
 education:
   - institution: 資展國際
     program: MSIT133 期 · 智慧應用微軟 C# 工程師就業養成班
@@ -91,29 +102,39 @@ education:
     end: 2010-06
     note: 大學畢業。曾任羽球系隊隊長。
 
-# 03 Stack。tech 是深色,practices 是灰色,對應 C1 那張表格的兩種權重。
+# 04 Stack。依領域分組:左欄組名,右欄用「·」串接項目。
+# 分組後順序本身就是訊息 —— Backend 與 Data 在前,是刻意的。
 skills:
-  tech:
-    - C#
-    - ASP.NET Core
-    - ASP.NET MVC
-    - VB.NET Web Forms
-    - T-SQL
-    - Stored Procedure
-    - SQL Server
-    - Razor
-    - TypeScript
-  practices:
-    - 批次排程
-    - 報表產製
-    - 正式環境排查
+  - group: Backend
+    items:
+      - C#
+      - ASP.NET Core
+      - ASP.NET MVC
+  - group: Data
+    items:
+      - SQL Server
+      - T-SQL
+      - Stored Procedures
+  - group: Frontend
+    items:
+      - Razor
+      - TypeScript
+  - group: Legacy / Modernization
+    items:
+      - VB.NET Web Forms
+  - group: Operations
+    items:
+      - Batch Jobs
+      - Deployment
+      - Production Troubleshooting
 
 languages:
   - name: 英文
     level: 聽 / 說 / 讀 / 寫 中等
 
-# 06 Contact。值為 null 的項目版型會整個不渲染,不要留空字串。
+# Contact。值為 null 的項目版型會整個不渲染,不要留空字串。
 links:
-  email: hsijcw@gmail.com
-  resume_pdf: /resume.pdf   # build 時產出,先佔位
-  github: https://github.com/weihsindev
+  email: hsijc99@gmail.com
+  resume_pdf: /resume.pdf   # build 時產出,先佔位;只給頁首的 CV.PDF 用
+  # GitHub 先不顯示。要放回去就把 null 換成 https://github.com/weihsindev
+  github: null

@@ -2,17 +2,19 @@
 import { resume, duration, ym } from '../lib/resume';
 import '../styles/resume.css';
 
-const { basics, summary, stats, about, experience, background_intro, education, skills, languages, links } = resume;
+const { basics, summary, stats, about, experience, projects_intro, projects, background_intro, education, skills, languages, links } = resume;
 
 const software = experience.filter((e) => e.track === 'software');
 const preSoftware = experience.filter((e) => e.track === 'pre_software');
 
+// id 明確寫出來:'Selected Work' 含空白,不能用 label 推導錨點。
 const sections = [
-  { num: '01', label: 'About' },
-  { num: '02', label: 'Systems' },
-  { num: '03', label: 'Stack' },
-  { num: '04', label: 'Background' },
-  { num: '05', label: 'Education' },
+  { num: '01', label: 'About', id: 'about' },
+  { num: '02', label: 'Experience', id: 'experience' },
+  { num: '03', label: 'Selected Work', id: 'work' },
+  { num: '04', label: 'Stack', id: 'stack' },
+  { num: '05', label: 'Background', id: 'background' },
+  { num: '06', label: 'Education', id: 'education' },
 ];
 
 const pageTitle = `${basics.name} (${basics.name_zh}) — ${basics.title}`;
@@ -48,15 +50,15 @@ const canonical = new URL(Astro.url.pathname, Astro.site);
         <div class="rail">{basics.name}</div>
         <div class="body">
           <nav class="nav">
-            {sections.map((s) => <a href={`#${s.label.toLowerCase()}`}>{s.num} {s.label}</a>)}
+            {sections.map((s) => <a href={`#${s.id}`}>{s.num} {s.label}</a>)}
             {links.resume_pdf && <a class="nav-cv" href={links.resume_pdf}>CV.PDF</a>}
           </nav>
         </div>
       </div>
 
-      <!-- 00 定位 -->
+      <!-- 定位。左欄刻意留空:編號從 01 About 開始。 -->
       <div class="row hero">
-        <div class="rail"><div class="rail-num">00</div></div>
+        <div class="rail"></div>
         <div class="body">
           <h1 class="hero-name">{basics.name}</h1>
           <div class="hero-alt">{basics.name_full} · {basics.name_zh}</div>
@@ -88,9 +90,9 @@ const canonical = new URL(Astro.url.pathname, Astro.site);
         </div>
       </section>
 
-      <!-- 02 Systems -->
-      <section class="row" id="systems">
-        <div class="rail"><div class="rail-num">02</div><div class="rail-label">Systems</div></div>
+      <!-- 02 Experience。只放在哪待過多久;交付內容在 03 Selected Work。 -->
+      <section class="row" id="experience">
+        <div class="rail"><div class="rail-num">02</div><div class="rail-label">Experience</div></div>
         <div class="body">
           {software.map((job) => (
             <article>
@@ -103,37 +105,50 @@ const canonical = new URL(Astro.url.pathname, Astro.site);
                   .filter(Boolean)
                   .join(' · ')}
               </div>
-              <div class="highlights">
-                {(job.highlights ?? []).map((h, i) => (
-                  <div class="highlight">
-                    <div class="highlight-num">{String(i + 1).padStart(2, '0')}</div>
-                    <div>
-                      <h3 class="highlight-title">{h.title}</h3>
-                      <div class="highlight-detail">{h.detail}</div>
-                    </div>
-                  </div>
-                ))}
-              </div>
+              {job.summary && <p class="job-summary">{job.summary}</p>}
             </article>
           ))}
         </div>
       </section>
 
-      <!-- 03 Stack -->
-      <section class="row" id="stack">
-        <div class="rail"><div class="rail-num">03</div><div class="rail-label">Stack</div></div>
+      <!-- 03 Selected Work。沿用 .highlights 的版型,形狀相同不另立樣式。 -->
+      <section class="row" id="work">
+        <div class="rail"><div class="rail-num">03</div><div class="rail-label">Selected Work</div></div>
         <div class="body">
-          <ul class="stack">
-            {skills.tech.map((s) => <li>{s}</li>)}
-            {skills.practices.map((s) => <li class="is-soft">{s}</li>)}
-          </ul>
+          <p class="section-intro">{projects_intro}</p>
+          <div class="highlights">
+            {projects.map((pj, i) => (
+              <div class="highlight">
+                <div class="highlight-num">{String(i + 1).padStart(2, '0')}</div>
+                <div>
+                  <h3 class="highlight-title">{pj.title}</h3>
+                  <div class="highlight-detail">{pj.detail}</div>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <!-- 04 Stack -->
+      <section class="row" id="stack">
+        <div class="rail"><div class="rail-num">04</div><div class="rail-label">Stack</div></div>
+        <div class="body">
+          <dl class="stack">
+            {skills.map((g) => (
+              <div class="stack-group">
+                <dt class="stack-label">{g.group}</dt>
+                <dd class="stack-items">{g.items.join(' · ')}</dd>
+              </div>
+            ))}
+          </dl>
           {languages.map((l) => <div class="langs">{l.name} — {l.level}</div>)}
         </div>
       </section>
 
-      <!-- 04 Background -->
+      <!-- 05 Background -->
       <section class="row" id="background">
-        <div class="rail"><div class="rail-num">04</div><div class="rail-label">Background</div></div>
+        <div class="rail"><div class="rail-num">05</div><div class="rail-label">Background</div></div>
         <div class="body">
           <p class="section-intro">{background_intro}</p>
           {preSoftware.map((job) => (
@@ -148,9 +163,9 @@ const canonical = new URL(Astro.url.pathname, Astro.site);
         </div>
       </section>
 
-      <!-- 05 Education -->
+      <!-- 06 Education -->
       <section class="row" id="education">
-        <div class="rail"><div class="rail-num">05</div><div class="rail-label">Education</div></div>
+        <div class="rail"><div class="rail-num">06</div><div class="rail-label">Education</div></div>
         <div class="body">
           {education.map((e) => (
             <div class="entry">
@@ -164,14 +179,16 @@ const canonical = new URL(Astro.url.pathname, Astro.site);
         </div>
       </section>
 
-      <!-- 06 Contact -->
+      <!-- 07 Contact -->
       <section class="row contact" id="contact">
-        <div class="rail"><div class="rail-num">06</div><div class="rail-label">Contact</div></div>
+        <div class="rail"><div class="rail-num">07</div><div class="rail-label">Contact</div></div>
         <div class="body">
           <div class="contact-links">
             <a href={`mailto:${links.email}`}>{links.email}</a>
-            {links.resume_pdf && <><span class="sep is-pdf">/</span><a class="is-pdf" href={links.resume_pdf}>履歷 PDF</a></>}
+            {/* 履歷 PDF 連結已移除:頁首右上的 CV.PDF 已經是同一個檔,重複放沒有意義。 */}
+            {/* GitHub 先隱藏。resume.yaml 的 links.github 設回網址就會顯示。
             {links.github && <><span class="sep">/</span><a href={links.github}>GitHub</a></>}
+            */}
           </div>
         </div>
       </section>

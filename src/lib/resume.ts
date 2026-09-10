@@ -33,9 +33,10 @@ const schema = z.object({
       company_size: z.string().optional(),
       location: z.string(),
       summary: z.string().optional(),
-      highlights: z.array(z.object({ title: z.string(), detail: z.string() })).optional(),
     }),
   ),
+  projects_intro: z.string(),
+  projects: z.array(z.object({ title: z.string(), detail: z.string() })),
   background_intro: z.string(),
   education: z.array(
     z.object({
@@ -46,7 +47,7 @@ const schema = z.object({
       note: z.string().optional(),
     }),
   ),
-  skills: z.object({ tech: z.array(z.string()), practices: z.array(z.string()) }),
+  skills: z.array(z.object({ group: z.string(), items: z.array(z.string()).min(1) })),
   languages: z.array(z.object({ name: z.string(), level: z.string() })),
   links: z.object({
     email: z.string().email(),

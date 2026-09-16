@@ -8,5 +8,10 @@
   "assets": {
     "directory": "./dist",
     "not_found_handling": "404-page"
-  }
+  },
+  // 網域寫在這裡而不是只留在 dashboard:部署時一併確保 custom domain 存在,
+  // 換帳號或重建專案時不必回想當初在 UI 點了什麼。
+  "routes": [
+    { "pattern": "weihsin.dev", "custom_domain": true }
+  ]
 }

@@ -17,6 +17,8 @@
 
 ## 要記得
 
+- **正式發布只走 GitHub Actions** (`.github/workflows/deploy.yml`)。本機用 `npm run dev`
+  或 `npm run preview` 預覽，不直接執行 `wrangler deploy`。操作方式見 `README.md`。
 - **`resume.yaml` 是唯一資料來源。** 資料、首頁模板、CSS、資料轉換或列印流程改完後，
   必須跑 `npm run pdf` 重出 PDF，否則 `npm run build` 會中斷建置。
   雜湊來源清單由 `scripts/pdf-source-hash.mjs` 統一管理。

@@ -7,7 +7,7 @@
     "test": "node --test scripts/*.test.mjs",
     "build": "astro build && node scripts/check-pdf-fresh.mjs",
     "preview": "astro preview",
-    "deploy": "npm run build && wrangler deploy",
+    "check:site": "node scripts/check-site.mjs",
     "pdf": "astro build && node scripts/generate-pdf.mjs"
   },
   "dependencies": {

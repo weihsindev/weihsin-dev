@@ -44,6 +44,8 @@ jobs:
       # 以 exit 1 擋下來,這裡刻意讓它擋 —— 履歷內容和 PDF 不一致比部署失敗更糟。
       - run: npm run build
 
+      - run: npm run check:site
+
       # 排隊或手動重跑的舊版本不得覆蓋 main 的新版。
       - name: Check latest main commit
         id: latest
@@ -85,3 +87,7 @@ jobs:
           done
           echo "::error::Live deployment does not match $GITHUB_SHA"
           exit 1
+
+      - name: Check live homepage and PDF
+        if: steps.latest.outputs.deploy == 'true'
+        run: npm run check:site -- https://weihsin.dev

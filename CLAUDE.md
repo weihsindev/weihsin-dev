@@ -17,8 +17,9 @@
 
 ## 要記得
 
-- **`resume.yaml` 是唯一資料來源。** 改完必須跑 `npm run pdf` 重出 PDF,
-  否則 `npm run build` 會比對內容雜湊並中斷建置(這是刻意的)。
+- **`resume.yaml` 是唯一資料來源。** 資料、首頁模板、CSS、資料轉換或列印流程改完後，
+  必須跑 `npm run pdf` 重出 PDF，否則 `npm run build` 會中斷建置。
+  雜湊來源清單由 `scripts/pdf-source-hash.mjs` 統一管理。
 - **年資用 104 的含頭含尾算法(月數 +1)。** `src/lib/resume.ts` 的 `duration()`。
   看起來像 off-by-one,但改掉會讓網站和投遞出去的履歷對不起來。
 - **Playwright 優先使用系統的 Google Chrome**,因為 `cdn.playwright.dev` 在此環境連不上。

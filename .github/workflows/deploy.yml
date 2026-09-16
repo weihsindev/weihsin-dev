@@ -11,8 +11,14 @@ on:
     branches: [main]
   workflow_dispatch:
 
+# 同站一次只部署一版,讓進行中的上傳與驗證完成;待執行的舊工作會被新工作取代。
+concurrency:
+  group: production-deploy
+  cancel-in-progress: false
+
 jobs:
   deploy:
+    if: github.ref == 'refs/heads/main'
     runs-on: ubuntu-latest
     permissions:
       contents: read
@@ -32,11 +38,50 @@ jobs:
         env:
           PLAYWRIGHT_SKIP_BROWSER_DOWNLOAD: '1'
 
-      # build 末端的 check-pdf-fresh.mjs 會在 resume.yaml 改了但 PDF 沒重出時
+      - run: npm test
+
+      # build 末端的 check-pdf-fresh.mjs 會在資料、版面或列印流程改了但 PDF 沒重出時
       # 以 exit 1 擋下來,這裡刻意讓它擋 —— 履歷內容和 PDF 不一致比部署失敗更糟。
       - run: npm run build
 
+      # 排隊或手動重跑的舊版本不得覆蓋 main 的新版。
+      - name: Check latest main commit
+        id: latest
+        run: |
+          latest_sha=$(git ls-remote origin refs/heads/main | cut -f1)
+          if [ "$latest_sha" = "$GITHUB_SHA" ]; then
+            echo "deploy=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "Skip outdated commit $GITHUB_SHA; main is $latest_sha"
+          fi
+
+      - name: Stamp deployment version
+        if: steps.latest.outputs.deploy == 'true'
+        run: |
+          node --input-type=module -e 'import { writeFileSync } from "node:fs"; writeFileSync("dist/version.json", JSON.stringify({ commit: process.env.GITHUB_SHA }) + "\n");'
+
       - run: npx wrangler deploy
+        if: steps.latest.outputs.deploy == 'true'
         env:
           CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+
+      - name: Verify live deployment
+        if: steps.latest.outputs.deploy == 'true'
+        env:
+          SITE_URL: https://weihsin.dev
+        run: |
+          for attempt in {1..6}; do
+            live_sha=$(curl --fail --silent --show-error --connect-timeout 5 --max-time 10 \
+              -H 'Cache-Control: no-cache' \
+              "$SITE_URL/version.json?run=$GITHUB_RUN_ID-$GITHUB_RUN_ATTEMPT&attempt=$attempt" \
+              | jq -er '.commit') || live_sha='unavailable'
+            if [ "$live_sha" = "$GITHUB_SHA" ]; then
+              echo "Verified $SITE_URL at $GITHUB_SHA"
+              exit 0
+            fi
+            echo "Attempt $attempt: expected $GITHUB_SHA, got $live_sha"
+            if [ "$attempt" -lt 6 ]; then sleep 5; fi
+          done
+          echo "::error::Live deployment does not match $GITHUB_SHA"
+          exit 1

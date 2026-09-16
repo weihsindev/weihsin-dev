@@ -1,9 +1,9 @@
 import { readFile } from 'node:fs/promises';
-import { createHash } from 'node:crypto';
 import { fileURLToPath } from 'node:url';
+import { pdfSourceHash } from './pdf-source-hash.mjs';
 
 /**
- * 擋住「改了履歷卻忘記重出 PDF」。
+ * 擋住「改了履歷、版面或列印流程卻忘記重出 PDF」。
  * 用內容雜湊而不是檔案時間,因為 git clone 不會保留 mtime,
  * 在 CI 上比對時間會誤判。
  */
@@ -14,9 +14,7 @@ const fail = (msg) => {
   process.exit(1);
 };
 
-const current = createHash('sha256')
-  .update(await readFile(`${root}src/content/resume.yaml`))
-  .digest('hex');
+const current = await pdfSourceHash();
 
 let recorded;
 try {
@@ -32,7 +30,7 @@ try {
 }
 
 if (recorded !== current) {
-  fail(`resume.yaml 已變更,但 PDF 還是舊的(PDF 用的是 ${recorded.slice(0, 12)},目前是 ${current.slice(0, 12)})。`);
+  fail(`履歷資料、版面或列印流程已變更,但 PDF 還是舊的(PDF 用的是 ${recorded.slice(0, 12)},目前是 ${current.slice(0, 12)})。`);
 }
 
-console.log('✓ PDF 與履歷資料一致');
+console.log('✓ PDF 與履歷資料、版面及列印流程一致');

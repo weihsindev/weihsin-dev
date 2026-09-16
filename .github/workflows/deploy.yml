@@ -1,0 +1,42 @@
+# 建置靜態站並部署到 Cloudflare Workers。
+#
+# 為什麼不用 Cloudflare 的 Git 整合:那是一條額外的連線,斷掉時不會通知你。
+# docs-weihsin-dev 就這樣安靜壞過一次,連線斷掉後推了好幾個 commit 都沒有部署。
+# 這個站是履歷入口,安靜失敗的代價最高 —— 改了履歷以為上線了,其實沒有。
+# Actions 的觸發是 repo 內建的,沒有可以斷掉的連線;失敗會是紅色的 ✗。
+name: deploy
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+
+    steps:
+      - uses: actions/checkout@v7
+
+      - uses: actions/setup-node@v6
+        with:
+          node-version: 22
+          cache: npm
+
+      # ci 而不是 install:完全照 package-lock,不會在 CI 裡悄悄升版。
+      # 跳過 Playwright 的瀏覽器下載:CI 只跑 build(檢查 PDF 是否過期),
+      # 產生 PDF 是本機 npm run pdf 的事,這裡下載瀏覽器是純粹的浪費。
+      - run: npm ci
+        env:
+          PLAYWRIGHT_SKIP_BROWSER_DOWNLOAD: '1'
+
+      # build 末端的 check-pdf-fresh.mjs 會在 resume.yaml 改了但 PDF 沒重出時
+      # 以 exit 1 擋下來,這裡刻意讓它擋 —— 履歷內容和 PDF 不一致比部署失敗更糟。
+      - run: npm run build
+
+      - run: npx wrangler deploy
+        env:
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}

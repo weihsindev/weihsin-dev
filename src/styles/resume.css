@@ -205,7 +205,7 @@ a:hover { color: #a5240f; border-bottom-color: #a5240f; }
   .row::after { content: ''; display: table; clear: both; }
 
   /* 高的區塊允許跨頁,否則會擠出整頁空白;矮的區塊整塊搬走。 */
-  #stack, #background, #education, .contact { break-inside: avoid; }
+  #stack, #background, #education, #certifications, .contact { break-inside: avoid; }
   .highlight, .entry, .job-head { break-inside: avoid; }
   .rail { break-after: avoid; }
 

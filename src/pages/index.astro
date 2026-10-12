@@ -2,7 +2,7 @@
 import { resume, duration, ym } from '../lib/resume';
 import '../styles/resume.css';
 
-const { basics, summary, stats, about, experience, projects_intro, projects, background_intro, education, skills, languages, links } = resume;
+const { basics, summary, stats, about, experience, projects_intro, projects, background_intro, education, certifications, skills, languages, links } = resume;
 
 const software = experience.filter((e) => e.track === 'software');
 const preSoftware = experience.filter((e) => e.track === 'pre_software');
@@ -15,6 +15,7 @@ const sections = [
   { num: '04', label: 'Stack', id: 'stack' },
   { num: '05', label: 'Background', id: 'background' },
   { num: '06', label: 'Education', id: 'education' },
+  { num: '07', label: 'Licenses', id: 'certifications' },
 ];
 
 const pageTitle = `${basics.name} (${basics.name_zh}) — ${basics.title}`;
@@ -179,9 +180,24 @@ const canonical = new URL(Astro.url.pathname, Astro.site);
         </div>
       </section>
 
-      <!-- 07 Contact -->
+      <!-- 07 Licenses(證照)。左欄放不下 Certifications 這麼長的字。沿用 04 Stack 的單行分組列:兩筆各佔一行，PDF 才維持兩頁。 -->
+      <section class="row" id="certifications">
+        <div class="rail"><div class="rail-num">07</div><div class="rail-label">Licenses</div></div>
+        <div class="body">
+          <dl class="stack">
+            {certifications.map((c) => (
+              <div class="stack-group">
+                <dt class="stack-label">{ym(c.issued)}</dt>
+                <dd class="stack-items">{c.name} — {[c.issuer, c.note].filter(Boolean).join(' · ')}</dd>
+              </div>
+            ))}
+          </dl>
+        </div>
+      </section>
+
+      <!-- 08 Contact -->
       <section class="row contact" id="contact">
-        <div class="rail"><div class="rail-num">07</div><div class="rail-label">Contact</div></div>
+        <div class="rail"><div class="rail-num">08</div><div class="rail-label">Contact</div></div>
         <div class="body">
           <div class="contact-links">
             <a href={`mailto:${links.email}`}>{links.email}</a>

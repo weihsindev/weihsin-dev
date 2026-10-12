@@ -47,6 +47,14 @@ const schema = z.object({
       note: z.string().optional(),
     }),
   ),
+  certifications: z.array(
+    z.object({
+      name: z.string(),
+      issuer: z.string(),
+      issued: yearMonth,
+      note: z.string().optional(),
+    }),
+  ),
   skills: z.array(z.object({ group: z.string(), items: z.array(z.string()).min(1) })),
   languages: z.array(z.object({ name: z.string(), level: z.string() })),
   links: z.object({

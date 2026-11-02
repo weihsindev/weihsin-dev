@@ -1,8 +1,4 @@
 # 履歷唯一資料來源。網頁版與 PDF 版都從這裡產生，不要在版型檔裡寫死任何經歷內容。
-# 資料來源:20260901-陳偉昕.pdf(2026-09-08 抽出)，廣寧百能起始日依本人更正為 2014-09。
-# 2026-09-18 依本人確認更正:協進橡膠改填實際辦公地台中(台北為公司登記地)，
-# 軟體年資改為「近 4 年」以對齊 104 的年資，債權回收與 ASP.NET Core 兩項合併為同一套系統。
-# 2026-10-12 依新版 陳偉昕.pdf 更新:和潤離職月改為 2026-03(104 記為 3 年 10 個月)，協進補上「海外六家工廠」。
 
 basics:
   name: Josh Chen
@@ -19,7 +15,7 @@ basics:
   available_from: 2026-04
 
 # hero 下方那句定位。刻意只講事實，不用形容詞。
-summary: 金融資訊系統後端開發與維運。熟悉 C#、ASP.NET Core、T-SQL 與 Stored Procedure，做過 VB.NET Web Forms 到 ASP.NET Core 的跨世代系統維護與現代化。
+summary: 金融資訊系統後端開發與維運。熟悉 C#、ASP.NET MVC、T-SQL 與 Stored Procedure，維護過 VB.NET Web Forms 與 ASP.NET MVC 系統，並以 ASP.NET Core 交付新系統。
 
 # hero 的四格數字。主動定義年資怎麼算，不讓人自己加總。
 stats:
@@ -82,7 +78,7 @@ projects:
   # 債權回收系統與「ASP.NET Core 現代化」原本分列兩項，實際是同一套(2025-06 起，開發至維運約一年)。
   # 資歷表只有一套，分列會被讀成兩個專案 —— 不要再拆回去。
   - title: 債權回收系統(ASP.NET Core)
-    detail: 既有系統缺少特定後段處理能力，主導新系統建立。梳理跨系統影響範圍，完成架構設計與模組切割，參考並調整既有 ASP.NET MVC 的架構模式，獨立交付建置、開發、Razor 與 TypeScript 整合、部署及後續維運。
+    detail: 既有系統缺少特定後段處理能力，主導新系統建立。以 ASP.NET Core 搭配 Razor 與 TypeScript 建置，採用框架的 DI、Middleware 與 Logging；考量時程與後續維運，資料存取與商業邏輯維持在 Stored Procedure。梳理跨系統影響範圍，獨立交付開發、部署及後續維運。
   - title: Stored Procedure 優化
     detail: 既有系統的商業邏輯大量集中於 SP，拆解並優化複雜 SP 的架構，改善報表與批次作業的執行效能。
   # 這一項不是系統，是橫跨三套系統的工作方式，所以標題刻意不帶「系統」。

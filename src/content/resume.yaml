@@ -80,7 +80,7 @@ projects:
   - title: 債權回收系統(ASP.NET Core)
     detail: 既有系統缺少特定後段處理能力，主導新系統建立。以 ASP.NET Core 搭配 Razor 與 TypeScript 建置，採用框架的 DI、Middleware 與 Logging；考量時程與後續維運，資料存取與商業邏輯維持在 Stored Procedure。梳理跨系統影響範圍，獨立交付開發、部署及後續維運。
   - title: Stored Procedure 優化
-    detail: 既有系統的商業邏輯大量集中於 SP，拆解並優化複雜 SP 的架構，改善報表與批次作業的執行效能。
+    detail: 既有系統的商業邏輯大量集中於 SP，拆解並優化複雜 SP 的架構，改善報表與批次作業的執行效能，其中報表 SP 執行時間由約 5 分鐘降至 1 分鐘內。
   # 這一項不是系統，是橫跨三套系統的工作方式，所以標題刻意不帶「系統」。
   - title: 需求與異常分析
     detail: 與使用單位確認需求及異常情境，追查資料來源、商業規則與系統流程，完成問題分析與修正。
@@ -103,7 +103,7 @@ education:
 
 # 07 Licenses。倒序。證照字號不放:公開網站不需要，要查驗再另外提供。
 certifications:
-  - name: AWS Certified AI Practitioner
+  - name: AWS Certified AI Practitioner (Foundational)
     issuer: Amazon Web Services
     issued: 2024-11
     note: 有效至 2027-11
@@ -133,7 +133,7 @@ skills:
     items:
       - Razor
       - TypeScript
-  - group: Legacy / Modernization
+  - group: Legacy
     items:
       - VB.NET Web Forms
   - group: Operations

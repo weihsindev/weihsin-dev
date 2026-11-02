@@ -210,7 +210,7 @@ a:hover { color: #a5240f; border-bottom-color: #a5240f; }
   .rail { break-after: avoid; }
 
   .stack { margin-bottom: 14px; }
-  .stack-group { padding: 7px 0; break-inside: avoid; }
+  .stack-group { padding: 5px 0; break-inside: avoid; }
   .langs { margin-top: 12px; }
 
   .rail, .body { padding-top: 12px; padding-bottom: 12px; }

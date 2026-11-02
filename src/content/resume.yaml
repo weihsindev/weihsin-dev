@@ -103,6 +103,10 @@ education:
 
 # 07 Licenses。倒序。證照字號不放:公開網站不需要，要查驗再另外提供。
 certifications:
+  - name: AWS Certified AI Practitioner
+    issuer: Amazon Web Services
+    issued: 2024-11
+    note: 有效至 2027-11
   - name: 證券商高級業務員
     issuer: 證券暨期貨市場發展基金會
     issued: 2013-08

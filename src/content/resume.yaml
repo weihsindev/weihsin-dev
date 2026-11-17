@@ -11,7 +11,7 @@ basics:
   location: 台北
   remote: true
   # 顯示在 hero 右側的狀態標籤。不想放的話設成 null，版型會整個省略。
-  status: 開放新機會
+  status: null
   available_from: 2026-04
 
 # hero 下方那句定位。刻意只講事實，不用形容詞。
